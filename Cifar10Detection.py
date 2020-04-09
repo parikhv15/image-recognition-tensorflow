@@ -13,7 +13,7 @@ reuseModel = True
 
 imageDimensions = (32,32)
 labels = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
-cifar10Model = Cifar10Model(cifar10.load_data(), labels)
+cifar10Model = Cifar10Model(cifar10.load_data(), labels, imageDimensions)
 
 scores = None
 if not reuseModel or not cifar10Model.loadExistingModel():

@@ -5,7 +5,7 @@ from os.path import isfile, join
 def fetchModel(modelName):
     import re
     modelName = str(modelName).lower()
-    regexMatch = re.compile(f'{modelName}.+\.h5')
+    regexMatch = re.compile(f'{modelName}.*\.h5')
     modelRootDir = "models/trained/"
     for f in listdir(modelRootDir):
         if isfile(join(modelRootDir, f)) and regexMatch.search(f):
@@ -14,14 +14,13 @@ def fetchModel(modelName):
     return None
 
 def getImages(directory):
-    validExtensions = [".png", ".jpeg", "jpg"]
+    validExtensions = [".png", ".jpeg", ".jpg"]
     directories = list()
     for f in listdir(directory):
         if not isfile(join(directory, f)):
             continue
 
         extension = path.splitext(f)
-
         if len(extension) == 2 and str(extension[1]).lower() in validExtensions:
             directories.append(directory+f)
 
